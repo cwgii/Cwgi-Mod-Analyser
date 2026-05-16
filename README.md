@@ -17,12 +17,6 @@
 powershell -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/cwgii/Cwgi-Mod-Analyser/main/Miller-Mod-Anylser.ps1')"
 ```
 
-### **Run Locally**
-
-If you already downloaded the script:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Users\Nigga\Downloads\Miller-Mod-Anylser.ps1"
 ```
 
 ## Usage

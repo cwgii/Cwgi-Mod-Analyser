@@ -15,9 +15,6 @@
 
 ```powershell
 powershell -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/cwgii/Cwgi-Mod-Analyser/main/Miller-Mod-Anylser.ps1')"
-```
-
-```
 
 ## Usage
 

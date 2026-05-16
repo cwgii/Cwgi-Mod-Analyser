@@ -1,144 +1,179 @@
-cwgi mod analyser
-Clean PowerShell GUI tool to scan Minecraft mods and flag possible cheat clients, hidden libraries, launcher bypasses, and obfuscated jars.
+[README.md](https://github.com/user-attachments/files/27857907/README.md)
+# **cwgi mod analyser**
 
-Installation
-Run it straight from GitHub:
+**Clean PowerShell GUI tool** for scanning Minecraft mods and finding possible cheat clients, hidden libraries, launcher bypasses, and obfuscated jars.
 
+> **Made by cwgi**
+>
+> **Discord:** `cwgii`  
+> **TikTok:** `cwgicuh`  
+> **Minecraft Server:** `aucpvp.net`
+
+## Installation
+
+### **Run Straight From GitHub**
+
+```powershell
 powershell -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/cwgii/Cwgi-Mod-Analyser/main/Miller-Mod-Anylser.ps1')"
-Or run the script locally if you already downloaded it:
+```
 
+### **Run Locally**
+
+If you already downloaded the script:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File "C:\Users\Nigga\Downloads\Miller-Mod-Anylser.ps1"
-Usage
-When the analyser opens:
+```
 
-Choose your Minecraft mods folder.
-Default path: %USERPROFILE%\AppData\Roaming\.minecraft\mods
-Press Start Scan.
-Results open in a dark GUI showing verified, unknown, suspicious, bypass, obfuscated, and JVM findings.
-How It Works
-Phase 1: Database Verification
-The analyser calculates the SHA1 hash of each JAR file and checks trusted mod databases.
+## Usage
 
-Modrinth API
-https://api.modrinth.com/v2/version_file/{hash}
+When **cwgi mod analyser** opens:
 
-Megabase API
-https://megabase.vercel.app/api/query?hash={hash}
+- **Choose your Minecraft mods folder**
+- **Default path:** `%USERPROFILE%\AppData\Roaming\.minecraft\mods`
+- Press **Start Scan**
+- View everything inside the clean dark GUI
 
-Mods found in these databases are marked as Verified.
+## How It Works
 
-Phase 2: Full Mod Folder Scan
-The analyser scans:
+### Phase 1: Database Verification
 
-Normal .jar mods
-Hidden files
-Hidden folders
-Nested library folders inside the mods directory
-JAR files loaded through launcher/runtime arguments
+The analyser calculates the **SHA1 hash** of each JAR file and checks trusted mod databases.
+
+**Modrinth API**
+`https://api.modrinth.com/v2/version_file/{hash}`
+
+**Megabase API**
+`https://megabase.vercel.app/api/query?hash={hash}`
+
+Mods found in these databases are marked as **VERIFIED**.
+
+### Phase 2: Full Mod Folder Scan
+
+The analyser scans **everything important**, including:
+
+- **Normal `.jar` mods**
+- **Hidden files**
+- **Hidden folders**
+- **Nested library folders**
+- **JAR files loaded through launcher/runtime arguments**
+
 This helps catch mods or libraries that are not sitting in the normal visible mods list.
 
-Phase 3: Dfabric.addMods Detection
-The analyser checks Minecraft/Java launcher arguments for Dfabric.addMods.
+### Phase 3: Dfabric.addMods Detection
 
-This matters because Dfabric.addMods can load extra JAR files outside the normal mods folder flow. If a jar is loaded this way, it is shown in the suspicious results so you can see exactly what was loaded and why it was flagged.
+The analyser checks Minecraft/Java launcher arguments for **`Dfabric.addMods`**.
 
-Phase 4: Pattern Analysis
-For unverified mods, the analyser:
+This matters because **`Dfabric.addMods` can load extra JAR files outside the normal mods folder flow**. If a jar is loaded this way, it is shown in the suspicious results so you can see exactly what was loaded and why it was flagged.
 
-Opens the JAR file.
-Reads internal file names and paths.
-Checks .class, .json, and MANIFEST.MF content.
-Searches for cheat-related patterns.
-Checks for obfuscation and weird package names.
-Explains the risk in simple English.
-Download Source Tracking
-The analyser checks Windows Zone.Identifier data when available to see where a mod was downloaded from.
+### Phase 4: Pattern Analysis
 
-Usually safer sources:
+For unverified mods, the analyser checks:
 
-Modrinth
-CurseForge
-Riskier sources:
+1. **JAR contents**
+2. **Internal file names and paths**
+3. **`.class`, `.json`, and `MANIFEST.MF` files**
+4. **Cheat-related patterns**
+5. **Obfuscation and weird package names**
+6. **Simple English explanations for why something looks suspicious**
 
-Discord / Discord CDN
-MediaFire
-GitHub
-MEGA
-Dropbox
-Google Drive
-AnyDesk
-DoomsdayClient
-PrestigeClient
-198Macros
-Detected Cheat Patterns
-The analyser looks for over 100 suspicious patterns.
+## Download Source Tracking
 
-Combat:
-AimAssist, AutoCrystal, AutoHitCrystal, TriggerBot, Velocity, Criticals, Reach, Hitboxes, ShieldBreaker, ShieldDisabler, AxeSpam
+The analyser checks Windows `Zone.Identifier` data when available to see where a mod was downloaded from.
 
-Movement:
-Flight, AntiKnockback, NoKnockback, JumpReset, SprintReset, NoJumpDelay
+### **Usually Safer Sources**
 
-PvP Utility:
-AutoTotem, AutoArmor, AutoPot, AutoDoubleHand, InventoryTotem, TotemHit, PopSwitch, LagReach, Wtap, FakeLag
+- Modrinth
+- CurseForge
 
-Visual:
-BlockESP, Freecam, PackSpoof, PingSpoof, FakeNick, FakeItem
+### **Riskier Sources**
 
-Automation:
-FastPlace, ChestSteal, Refill, AutoEat, AutoMine, AutoClicker, FastXP
+- Discord / Discord CDN
+- MediaFire
+- GitHub
+- MEGA
+- Dropbox
+- Google Drive
+- AnyDesk
+- DoomsdayClient
+- PrestigeClient
+- 198Macros
 
-Known Clients:
-Asteria, Prestige, Xenon, Argon, Hellion, Grim, Virgin, Donut, Krypton, dev.krypton, dev.gambleclient
+## Detected Cheat Patterns
 
-Obfuscation / hidden client signs:
+The analyser looks for **over 100 suspicious patterns**.
 
-Confusing class names
-Single-letter package paths
-Gibberish class names
-Strange mixins
-Hidden libraries
-Suspicious native/input libraries
-jnativehook
-imgui
-imgui.gl3
-imgui.glfw
-Result Categories
-Verified
+### **Combat**
+`AimAssist`, `AutoCrystal`, `AutoHitCrystal`, `TriggerBot`, `Velocity`, `Criticals`, `Reach`, `Hitboxes`, `ShieldBreaker`, `ShieldDisabler`, `AxeSpam`
+
+### **Movement**
+`Flight`, `AntiKnockback`, `NoKnockback`, `JumpReset`, `SprintReset`, `NoJumpDelay`
+
+### **PvP Utility**
+`AutoTotem`, `AutoArmor`, `AutoPot`, `AutoDoubleHand`, `InventoryTotem`, `TotemHit`, `PopSwitch`, `LagReach`, `Wtap`, `FakeLag`
+
+### **Visual**
+`BlockESP`, `Freecam`, `PackSpoof`, `PingSpoof`, `FakeNick`, `FakeItem`
+
+### **Automation**
+`FastPlace`, `ChestSteal`, `Refill`, `AutoEat`, `AutoMine`, `AutoClicker`, `FastXP`
+
+### **Known Clients**
+`Asteria`, `Prestige`, `Xenon`, `Argon`, `Hellion`, `Grim`, `Virgin`, `Donut`, `Krypton`, `dev.krypton`, `dev.gambleclient`
+
+### **Obfuscation / Hidden Client Signs**
+
+- Confusing class names
+- Single-letter package paths
+- Gibberish class names
+- Strange mixins
+- Hidden libraries
+- Suspicious native/input libraries
+- `jnativehook`
+- `imgui`
+- `imgui.gl3`
+- `imgui.glfw`
+
+## Result Categories
+
+### **Verified**
 
 Mods found in trusted mod databases.
 
-Unknown
+### **Unknown**
 
 Mods not found in trusted databases, but with no strong suspicious patterns detected.
 
-Suspicious / All Flags
+### **Suspicious / All Flags**
 
 Mods or libraries with suspicious patterns, obfuscation, bypass loading, strange download sources, or anything different from normal verified mods.
 
-Bypass
+### **Bypass**
 
-Mods loaded in unusual ways, including Dfabric.addMods.
+Mods loaded in unusual ways, including **`Dfabric.addMods`**.
 
-Obfuscated
+### **Obfuscated**
 
 Mods that look intentionally hard to read or verify.
 
-JVM
+### **JVM**
 
 Runtime or launcher argument findings from the active Java/Minecraft process.
 
-Extra Information
+## Extra Information
+
 If Minecraft is running, the analyser can show:
 
-Java process name
-Process PID
-Startup time
-Current uptime
-Launcher arguments that may load extra JAR files
-Contacts
-Discord: cwgii
+- **Java process name**
+- **Process PID**
+- **Startup time**
+- **Current uptime**
+- **Launcher arguments that may load extra JAR files**
 
-TikTok: cwgicuh
+## Contacts
 
-Minecraft Server: aucpvp.net
+Discord: `cwgii`
+
+TikTok: `cwgicuh`
+
+Minecraft Server: `aucpvp.net`

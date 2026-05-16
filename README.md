@@ -20,7 +20,7 @@ powershell -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-RestMetho
 If you already downloaded the script:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Users\Nigga\Downloads\Miller-Mod-Anylser.ps1"
+powershell -ExecutionPolicy Bypass -File "C:%USERPROFILE%\Downloads\Miller-Mod-Anylser.ps1"
 ```
 
 ## Usage
